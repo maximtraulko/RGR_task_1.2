@@ -14,7 +14,6 @@
 				}
 			?>">
 			</p>
-			
 			<p>Введите длину второй стороны треугольника (b)
 			<input type="text" name="b" value= "<?php 
 				if (isset($_GET['b'])){
@@ -22,7 +21,6 @@
 				} 
 			?>">
 			</p>
-			
 			<p>Введите длину третьей стороны треугольника (c)
 			<input type="text" name="c" value= "<?php 
 				if (isset($_GET['c'])){
@@ -32,7 +30,6 @@
 			</p>
 			<input type="submit" value="Посчитать длину медианы" name="median">
 		</form>
-		
 		<?php
 		if (isset($_GET['a'])&&isset($_GET['b'])&&isset($_GET['c'])) {
 			if (((!is_numeric($_GET['a'])) or (($_GET['a']) < 0)) or ((!is_numeric($_GET['b'])) or (($_GET['b']) < 0)) or ((!is_numeric($_GET['c'])) or (($_GET['c']) < 0))){
