@@ -1,12 +1,12 @@
 <html>
 	<head> 
 		<meta charset="UTF-8"> 
-		<TITLE>Расчет медианы треугольника по трем сторонам</title>
+		<title>Расчет медианы треугольника по трем сторонам</title>
 	</head>
 	<body>
-		<form action="1.php" method="GET">
+		<form action="6.php" method="GET">
 			<p>Медианой треугольника (m) называется отрезок, соединяющий любую вершину треугольника с серединой противоположной стороны. <br> Медиана, соединяющая вершину треугольника A с серединой стороны a, обозначается m.<br> Медиана треугольника, через стороны треугольника выражается указанной ниже формулой (1), где a, b, c - стороны треугольника; M(a) - медиана треугольника</p>
-			<p><img src='https://goo.gl/jrkvQK' alt="фотография"></p>
+			<p><img src='https://pp.vk.me/c636826/v636826040/3bf1c/vtYz8QrvHgY.jpg' alt="фотография"></p>
 			<p>Введите длину первой стороны треугольника (a)
 			<input type="text" name="a" value= "<?php 
 				if (isset($_GET['a'])){
@@ -30,24 +30,20 @@
 				} 
 			?>">
 			</p>
-			<input type="submit" value="Посчитать длину медианы" name="add">
+			<input type="submit" value="Посчитать длину медианы" name="median">
 		</form>
 		
-		<?php function calc($a,$b,$c,$action){	
-			if  ((strlen($a)==0) or (strlen($b)==0) or (strlen($c)==0)){
-				exit("Внимание! Не все поля заполнены!");    
+		<?php
+		if (isset($_GET['a'])&&isset($_GET['b'])&&isset($_GET['c'])) {
+			if (((!is_numeric($_GET['a'])) or (($_GET['a']) < 0)) or ((!is_numeric($_GET['b'])) or (($_GET['b']) < 0)) or ((!is_numeric($_GET['c'])) or (($_GET['c']) < 0))){
+			  echo ('Внимание! Введено нечисловое или отрицательное числовое значение!');
+			} else {
+				echo ('Результат: '.number_format((calc($_GET['a'], $_GET['b'],  $_GET['c'], $action)), 2, ',', ' '));
 			}
-			if((is_numeric($a) and $a > 0) and (is_numeric($b) and $b > 0) and (is_numeric($c) and $c > 0)){
-				return (0.5*sqrt (2*(pow($b,2))+(2*(pow($c,2)))-(pow($a,2))));
-			}
-				else{
-				exit ('Внимание! Введено нечисловое или отрицательное числовое значение!');
-				}
 		}
-		if(isset($_GET['a'])&&isset($_GET['b'])&&isset($_GET['c'])){ 
-		$action="add";
+		function calc($a,$b,$c,$action){	
+			return (0.5*sqrt (2*(pow($b,2))+(2*(pow($c,2)))-(pow($a,2))));
+		}
 		?>
-		Результат:  <?=number_format((calc($_GET['a'], $_GET['b'],  $_GET['c'], $action)), 2, ',', ' ')?>		
-		<?php } ?>
 	</body>
 </html>
