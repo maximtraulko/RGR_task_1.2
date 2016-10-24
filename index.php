@@ -32,7 +32,10 @@
 		</form>
 		<?php
 			if (isset($_GET['a'])&&isset($_GET['b'])&&isset($_GET['c'])) {
-				if (((!is_numeric($_GET['a'])) or (($_GET['a']) < 0)) or ((!is_numeric($_GET['b'])) or (($_GET['b']) < 0)) or ((!is_numeric($_GET['c'])) or (($_GET['c']) < 0))){
+				if ((2*(pow($_GET['b'],2))+(2*(pow($_GET['c'],2))))<=(pow($_GET['a'],2))) {
+					echo ('Внимание! Стороны треугольника введены неверно!');
+				}
+				elseif (((!is_numeric($_GET['a'])) or (($_GET['a']) < 0)) or ((!is_numeric($_GET['b'])) or (($_GET['b']) < 0)) or ((!is_numeric($_GET['c'])) or (($_GET['c']) < 0))){
 				  echo ('Внимание! Введено нечисловое или отрицательное числовое значение!');
 				} else {
 					echo ('Результат: '.number_format((calc($_GET['a'], $_GET['b'],  $_GET['c'])), 2, ',', ' '));
