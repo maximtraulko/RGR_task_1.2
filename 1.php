@@ -35,10 +35,10 @@
 				if (((!is_numeric($_GET['a'])) or (($_GET['a']) < 0)) or ((!is_numeric($_GET['b'])) or (($_GET['b']) < 0)) or ((!is_numeric($_GET['c'])) or (($_GET['c']) < 0))){
 				  echo ('Внимание! Введено нечисловое или отрицательное числовое значение!');
 				} else {
-					echo ('Результат: '.number_format((calc($_GET['a'], $_GET['b'],  $_GET['c'], $action)), 2, ',', ' '));
+					echo ('Результат: '.number_format((calc($_GET['a'], $_GET['b'],  $_GET['c'])), 2, ',', ' '));
 				}
 			}
-			function calc($a,$b,$c,$action){	
+			function calc($a,$b,$c){	
 				return (0.5*sqrt (2*(pow($b,2))+(2*(pow($c,2)))-(pow($a,2))));
 			}
 		?>
